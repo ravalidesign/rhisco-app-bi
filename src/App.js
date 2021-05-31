@@ -1,17 +1,41 @@
-import React from 'react';
-import HistoricalPrice from './Graficos/Historical_Price/HistoricalPrice'
-import Return from './Graficos/Return/Return';
+import React, { Fragment } from 'react';
+import AppAnalista from './AppAnalista';
+import AppDirectivo from './AppDirectivo';
+import './App.css';
+import './Graficos/Return/FilterReturn.css'
+import './General/Navigation/NavGraph.css'
+import './General/Navigation/NavTable.css'
+import './Graficos/Sector/Sector.css';
+import './Graficos/Asset_Allocation/AssetAllocation.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Rhisco</h1>
-        <HistoricalPrice/>
-        <Return/>
-      </header>
-    </div>
+    <Fragment>
+      <Router>
+        <Link to = '/analista'>
+        <button>Analista</button>
+        </Link>
+        <Link to = '/directivo'>
+        <button>Directivo</button>
+        </Link>
+        <Switch>
+          <Route path = '/directivo'>
+            <AppDirectivo/>
+          </Route>
+          <Route path = '/analista'>
+            <AppAnalista/>
+          </Route>
+        </Switch>
+      </Router>
+    </Fragment>
   );
 }
 
